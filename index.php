@@ -34,6 +34,7 @@
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header>
     <h1 class="visuallyhidden"><?php echo $slides_title; ?></h1>
+    <h2 class="visuallyhidden"><?php echo $slides_description; ?></h2>
   </header>
 
   <div id="container" role="main">
@@ -95,11 +96,14 @@
   </script>
   <script src="js/script.js"></script>
 
+  <?php if($google_analytics_id != "UA-XXXXX-X"){ ?>
   <script>
     var _gaq=[['_setAccount','<?php echo $google_analytics_id; ?>'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
+  <?php } ?>
+
 </body>
 </html>
