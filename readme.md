@@ -39,6 +39,10 @@ Please submit your pull requests to make this script better.
 
 * jQuery: MIT/GPL license
 * Modernizr: MIT/BSD license
+* ScrollTo: Copyright (c) 2007-2009 Ariel Flesler
+* SerialScroll: Copyright (c) 2007-2009 Ariel Flesler
+* Mousewheel: Copyright (c) 2011 Brandon Aaron
+* jQuery Easing: BSD License
 * Normalize.css: Public Domain
 
 ### Everything else:
