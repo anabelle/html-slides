@@ -23,7 +23,7 @@ $interval = "false"; /* Interval between automatic slide change in miliseconds, 
 /* An array containing desired position within slideshow and video URLs  */
 
 $videos = array(
-    // "2" => "http://www.youtube.com/watch?v=MejbOFk7H6c", /* You can add all videos you want in the positions you like. There can not be more videos than images or they won't show up. */
+     "2" => "http://www.youtube.com/watch?v=MejbOFk7H6c", /* You can add all videos you want in the positions you like. There can not be more videos than images or they won't show up. */
     // "5" => "http://vimeo.com/36160341",
     // "6" => "http://www.youtube.com/watch?v=MejbOFk7H6c",
     // "10" => "http://vimeo.com/36160348",

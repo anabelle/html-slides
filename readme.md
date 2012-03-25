@@ -1,8 +1,7 @@
-# HTML Image Slides
+# HTML Slides
 
 This is a very simple script that will allow you to set up an image based slideshow in no time.
-It has support for jpg, png, and gif images, as well as youtube and vimeo support so your slides can be a full screen video.
-
+It has support for jpg, png, and gif images, as well as youtube and vimeo support so some of your slides can be a full screen video.
 
 
 ## Quick start
@@ -15,16 +14,18 @@ All you need is a php server, upload the script, drop some images in the img fol
 * HTML5 ready.
 * Cross-browser compatible (Chrome, Opera, Safari, Firefox 3.6+).
 * Responsive layout, you can select to crop or letterbox your images.
-* Google analytics support
+* Auto-advance slides
+* Minimal css and html
 * Dead simple youtube and vimeo support
-* Mousewheel and keyboard navigation
+* Google analytics support
+* Click, Mousewheel and keyboard navigation
 * Easy to customize
 * Built on top of the best plugins available.
 
 
 ## Settings
 
-For an out of the box installation you should just add images to the img folder and set your options in the config.php file.
+For an out of the box installation you should just add images to the img folder and set your basic settings in the config.php file.
 
 
 ## Contributing

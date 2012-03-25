@@ -97,10 +97,26 @@ body , html {
   text-align:left;
 }
 
+.js #slideshow .video a {
+  display:block;
+  /* I like being dirty */
+  font-size:0px;
+  letter-spacing:-1em;
+  line-height:0px;
+}
 
+.no-js #slideshow {
+  overflow: auto;
+}
 
-
-
+.no-js #slideshow .video a {
+  color:#fff;
+  display:block;
+  font-size:2em;
+  padding: 40px 0px;
+  text-align:center;
+  text-decoration:none;
+}
 
 @media only screen and (min-width: 35em) {
   
