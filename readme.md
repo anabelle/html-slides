@@ -1,45 +1,36 @@
-# [HTML5 Boilerplate](http://html5boilerplate.com)
+# HTML Image Slides
 
-HTML5 Boilerplate is a professional front-end template that helps you build fast, robust, adaptable, and future-proof websites. Spend more time developing and less time reinventing the wheel.
+This is a very simple script that will allow you to set up an image based slideshow in no time.
+It has support for jpg, png, and gif images, as well as youtube and vimeo support so your slides can be a full screen video.
 
-This project is the product of many years of iterative development and combined community knowledge. It does not impose a specific development philosophy or framework, so you're free to architect your code in the way that you want.
 
 
 ## Quick start
 
-Clone the git repo - `git clone git://github.com/h5bp/html5-boilerplate.git` - or [download it](https://github.com/h5bp/html5-boilerplate/zipball/master)
+All you need is a php server, upload the script, drop some images in the img folder and you are done.
 
 
 ## Features
 
-* HTML5 ready. Use the new elements with confidence.
-* Cross-browser compatible (Chrome, Opera, Safari, Firefox 3.6+, IE6+).
-* Designed with progressive enhancement in mind.
-* CSS normalizations and common bug fixes.
-* IE-specific classes for easier cross-browser control.
-* A default print stylesheet, performance optimized.
-* Mobile browser optimizations.
-* Protection against any stray `console.log` causing JavaScript errors in IE6/7.
-* The latest jQuery via CDN, with a local fallback.
-* A custom Modernizr build for feature detection.
-* An optimized Google Analytics snippet.
-* Apache server caching, compression, and other configuration defaults for Grade-A performance.
-* Cross-domain Ajax and Flash.
-* "Delete-key friendly." Easy to strip out parts you don't need.
-* Extensive inline and accompanying documentation.
+* HTML5 ready.
+* Cross-browser compatible (Chrome, Opera, Safari, Firefox 3.6+).
+* Responsive layout, you can select to crop or letterbox your images.
+* Google analytics support
+* Dead simple youtube and vimeo support
+* Mousewheel and keyboard navigation
+* Easy to customize
+* Built on top of the best plugins available.
+
+
+## Settings
+
+For an out of the box installation you should just add images to the img folder and set your options in the config.php file.
 
 
 ## Contributing
 
-Anyone and everyone is welcome to [contribute](https://github.com/h5bp/html5-boilerplate/wiki/contribute). Hundreds of developers have helped make the HTML5 Boilerplate what it is today.
-
-
-## Project information
-
-* Source: http://github.com/h5bp/html5-boilerplate
-* Web: http://html5boilerplate.com
-* Docs: http://html5boilerplate.com/docs
-* Twitter: http://twitter.com/h5bp
+Anyone and everyone is welcome to contribute. 
+Please submit your pull requests to make this script better.
 
 
 ## License

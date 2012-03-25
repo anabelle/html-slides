@@ -20,10 +20,11 @@ $duration = "0"; /* Duration of the scrolling between slides in miliseconds, 0 f
 $interval = "false"; /* Interval between automatic slide change in miliseconds, set 0 to disable auto advance */
 
 // Video settings
-/* An array containing video URLs and desired position within slideshow */
+/* An array containing desired position within slideshow and video URLs  */
+
 $videos = array(
-    "2" => "http://www.youtube.com/watch?v=MejbOFk7H6c",
-    "5" => "http://vimeo.com/36160341",
+    // "2" => "http://www.youtube.com/watch?v=MejbOFk7H6c", /* You can add all videos you want in the positions you like. There can not be more videos than images or they won't show up. */
+    // "5" => "http://vimeo.com/36160341",
 );
 
 // Advanced settings
