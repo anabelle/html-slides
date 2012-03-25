@@ -19,6 +19,13 @@ $cycle = "true"; /* Back to first image after reaching the last one either true 
 $duration = "0"; /* Duration of the scrolling between slides in miliseconds, 0 for instant slide change */
 $interval = "false"; /* Interval between automatic slide change in miliseconds, set 0 to disable auto advance */
 
+// Video settings
+/* An array containing video URLs and desired position within slideshow */
+$videos = array(
+    "2" => "http://www.youtube.com/watch?v=MejbOFk7H6c",
+    "5" => "http://vimeo.com/36160341",
+);
+
 // Advanced settings
 $google_analytics_id = "UA-XXXXX-X";
 $images_folder = "img";

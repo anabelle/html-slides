@@ -13,6 +13,9 @@
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/style.css">
   <style>
+    a {
+      color:<?php echo $text_color; ?>;
+    }
     body {
       background-color:<?php echo $background_color; ?>;
       color:<?php echo $text_color; ?>;
@@ -52,6 +55,9 @@
         for($index=0; $index < $count; $index++) {
           $extension = substr($img_array[$index], -3);
           if ($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
+            if($videos[$img_count+1]){
+              echo '<li class="slide video"><a class="videolink" href="'.$videos[$img_count+1].'">Video '.($img_count+1).'</a></li>'.PHP_EOL;
+            }
             echo '<li class="slide" style="background-image:url('. $images_folder . '/' . $img_array[$index] .');"><img class="visuallyhidden" src="' . $images_folder . '/' . $img_array[$index] . '" alt="" /></li>'.PHP_EOL;
             $img_count++;
           } 

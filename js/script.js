@@ -1,8 +1,11 @@
 /* Author: Anabelle Handdoek */
 jQuery(document).ready(function($) {
+	// Videos
+	$('.videolink').asyncml();
+
 	// Main function call to seriallscroll is in index.php to allow for php config
 
-	$('.slide').click(function(){
+	$('.slide:not(.video)').click(function(){
 		$('#slideshow').trigger( 'next' );
 	})
 
