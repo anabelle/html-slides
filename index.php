@@ -17,6 +17,12 @@
       background-color:<?php echo $background_color; ?>;
       color:<?php echo $text_color; ?>;
     }
+
+    .slide {
+        -webkit-background-size:<?php echo $slide_size; ?>;
+        -moz-background-size:<?php echo $slide_size; ?>;
+        background-size:<?php echo $slide_size; ?>;
+    }
   </style>
 
   <script src="js/libs/modernizr-2.5.3.min.js"></script>
@@ -27,7 +33,7 @@
     <h1 class="visuallyhidden"><?php echo $slides_title; ?></h1>
   </header>
 
-  <div role="main">
+  <div id="container" role="main">
     <ul id="slideshow">
     <?php
         $img_dir = opendir($images_folder);
@@ -41,14 +47,21 @@
         sort($img_array);
 
         $count = count($img_array);
+        $img_count = 0;
 
         for($index=0; $index < $count; $index++) {
           $extension = substr($img_array[$index], -3);
           if ($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
-            echo '<li><img src="' . $images_folder . '/' . $img_array[$index] . '" alt="" /></li>'.PHP_EOL;
+            echo '<li class="slide" style="background-image:url('. $images_folder . '/' . $img_array[$index] .');"><img class="visuallyhidden" src="' . $images_folder . '/' . $img_array[$index] . '" alt="" /></li>'.PHP_EOL;
+            $img_count++;
           } 
         }
+
+        if( $img_count == 0 ){
+          echo ("<h2>Oops! No images found</h2>".PHP_EOL."<h3>Go ahead and add some files to the images folder</h3>");
+        }
     ?>
+
     </ul>
   </div>
 
@@ -60,6 +73,20 @@
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
   <script src="js/plugins.js"></script>
+
+  <script>
+    jQuery(document).ready(function($) {
+      $('#slideshow').serialScroll({
+        axis: 'y',
+        cycle: <?php echo $cycle; ?>,
+        easing: 'easeInOutExpo',
+        items: '.slide',
+        duration: <?php echo $duration; ?><?php if($interval != "false"){ ?>,
+        interval: <?php echo $interval; ?>,
+        force: true <?php } ?>
+      });
+    });
+  </script>
   <script src="js/script.js"></script>
 
   <script>
