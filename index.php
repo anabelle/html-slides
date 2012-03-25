@@ -1,0 +1,72 @@
+<!doctype html>
+<?php require_once('config.php'); ?>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="<?php echo $lang; ?>"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="<?php echo $lang; ?>"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="<?php echo $lang; ?>"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="<?php echo $lang; ?>"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title><?php echo $slides_title; ?></title>
+  <meta name="description" content="<?php echo $slides_description; ?>">
+
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background-color:<?php echo $background_color; ?>;
+      color:<?php echo $text_color; ?>;
+    }
+  </style>
+
+  <script src="js/libs/modernizr-2.5.3.min.js"></script>
+</head>
+<body>
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <header>
+    <h1 class="visuallyhidden"><?php echo $slides_title; ?></h1>
+  </header>
+
+  <div role="main">
+    <ul id="slideshow">
+    <?php
+        $img_dir = opendir($images_folder);
+
+        while($file_name = readdir($img_dir)) {
+          $img_array[] = $file_name;
+        }
+
+        closedir($img_dir);
+
+        sort($img_array);
+
+        $count = count($img_array);
+
+        for($index=0; $index < $count; $index++) {
+          $extension = substr($img_array[$index], -3);
+          if ($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
+            echo '<li><img src="' . $images_folder . '/' . $img_array[$index] . '" alt="" /></li>'.PHP_EOL;
+          } 
+        }
+    ?>
+    </ul>
+  </div>
+
+  <footer>
+
+  </footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+  <script src="js/plugins.js"></script>
+  <script src="js/script.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','<?php echo $google_analytics_id; ?>'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+</body>
+</html>
