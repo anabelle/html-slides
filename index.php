@@ -85,10 +85,8 @@
   <script>
     jQuery(document).ready(function($) {
 
-      // scrollTo if #_ found
       hashname = window.location.hash;
-      // find element to scroll to (<a name=""> or anything with particular id)
-
+      
       elem = hashname.substring(0, hashname.length-1);
 
       var start = 0; 
