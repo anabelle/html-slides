@@ -104,6 +104,14 @@
         items: '.slide',
         onAfter: function(elem){ 
                     window.location.hash = $(elem).attr('id')+1;
+
+                    var index = $(elem).index();
+
+                    <?php if($callback){
+
+                      echo( $callback );
+
+                    } ?>
                  },
         duration: <?php echo $duration; ?><?php if($interval != "false"){ ?>,
         interval: <?php echo $interval; ?>,
