@@ -84,14 +84,28 @@
 
   <script>
     jQuery(document).ready(function($) {
+
+      // scrollTo if #_ found
+      hashname = window.location.hash;
+      // find element to scroll to (<a name=""> or anything with particular id)
+
+      elem = hashname.substring(0, hashname.length-1);
+
+      var start = 0; 
+
+      if(elem) {
+           $('#slideshow').scrollTo(elem, 0);
+           start = $(elem).index();
+      }
+
       $('#slideshow').serialScroll({
         axis: 'y',
+        start: start,
         cycle: <?php echo $cycle; ?>,
         easing: 'easeInOutExpo',
         items: '.slide',
         onAfter: function(elem){ 
-                    console.log(elem); 
-                    window.location.hash = $(elem).attr('id');
+                    window.location.hash = $(elem).attr('id')+1;
                  },
         duration: <?php echo $duration; ?><?php if($interval != "false"){ ?>,
         interval: <?php echo $interval; ?>,
