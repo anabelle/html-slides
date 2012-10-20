@@ -15,10 +15,8 @@ jQuery(document).ready(function($) {
 		event.preventDefault();
 		if(delta < 0){
 			$('#slideshow').trigger( 'next' );
-			console.log(delta);
 		}else{
 			$('#slideshow').trigger( 'prev' );
-			console.log(delta);
 		}
 	});
 
