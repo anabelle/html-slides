@@ -57,9 +57,9 @@
           $extension = substr($img_array[$index], -3);
           if ($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
             if($videos[$img_count+1]){
-              echo '<li class="slide video"><a class="videolink" href="'.$videos[$img_count+1].'" target="_blank">Video '.($img_count+1).'</a></li>'.PHP_EOL;
+              echo '<li class="slide video" id="s'.$img_count.$hash.'"><a class="videolink" href="'.$videos[$img_count+1].'" target="_blank">Video '.($img_count+1).'</a></li>'.PHP_EOL;
             }
-            echo '<li class="slide" style="background-image:url('. $images_folder . '/' . $img_array[$index] .');"><img class="visuallyhidden" src="' . $images_folder . '/' . $img_array[$index] . '" alt="" /></li>'.PHP_EOL;
+              echo '<li class="slide" id="s'.$img_count.$hash.'" style="background-image:url('. $images_folder . '/' . $img_array[$index] .');"><img class="visuallyhidden" src="' . $images_folder . '/' . $img_array[$index] . '" alt="" /></li>'.PHP_EOL;
             $img_count++;
           } 
         }
@@ -128,11 +128,29 @@
 
   <script>
     jQuery(document).ready(function($) {
+      hashname = window.location.hash;
+      elem = hashname.substring(0, hashname.length-1);
+
+      var start = 0; 
+
+      if(elem) {
+         $('#slideshow').scrollTo(elem, 0);
+         start = $(elem).index();
+      }
+
       $('#slideshow').serialScroll({
         axis: 'y',
+        start: start,
         cycle: <?php echo $cycle; ?>,
         easing: 'easeInOutExpo',
         items: '.slide',
+        onAfter: function(elem){ 
+          window.location.hash = $(elem).attr('id')+1;
+          var index = $(elem).index();
+          <?php if($callback){
+            echo( $callback );
+          } ?>
+        },
         duration: <?php echo $duration; ?><?php if($interval != "false"){ ?>,
         interval: <?php echo $interval; ?>,
         force: true <?php } ?>

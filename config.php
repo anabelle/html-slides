@@ -18,6 +18,7 @@ $slide_size = "cover"; /* contain or cover | contain to fit image inside screen 
 $cycle = "true"; /* Back to first image after reaching the last one either true or false*/
 $duration = "0"; /* Duration of the scrolling between slides in miliseconds, 0 for instant slide change */
 $interval = "false"; /* Interval between automatic slide change in miliseconds, set 0 to disable auto advance */
+$callback = "console.log('callback'+index);"; /* Callback que será llamado despues de cada cambio de slide, index es el numero de slide */
 
 // Soundtrack settings
 $soundtrack_play = "true"; // Set to false if you don't wan't sound along with your slides
