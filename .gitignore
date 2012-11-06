@@ -1,5 +1,6 @@
 # Ignore your pretty photos from the repo (add if you like)
 /img/*
+/audio/*
 
 # Numerous always-ignore extensions
 *.diff
