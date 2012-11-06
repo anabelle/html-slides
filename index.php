@@ -52,6 +52,7 @@
 
         $count = count($img_array);
         $img_count = 0;
+        $hash = md5($count);
 
         for($index=0; $index < $count; $index++) {
           $extension = substr($img_array[$index], -3);
