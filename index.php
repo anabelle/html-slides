@@ -52,15 +52,14 @@
 
         $count = count($img_array);
         $img_count = 0;
-        $hash = md5($count);
 
         for($index=0; $index < $count; $index++) {
           $extension = substr($img_array[$index], -3);
           if ($extension == 'jpg' || $extension == 'png' || $extension == 'gif'){
             if($videos[$img_count+1]){
-              echo '<li class="slide video" id="s'.$img_count.$hash.'"><a class="videolink" href="'.$videos[$img_count+1].'" target="_blank">Video '.($img_count+1).'</a></li>'.PHP_EOL;
+              echo '<li class="slide video"><a class="videolink" href="'.$videos[$img_count+1].'" target="_blank">Video '.($img_count+1).'</a></li>'.PHP_EOL;
             }
-            echo '<li class="slide" id="s'.$img_count.$hash.'" style="background-image:url('. $images_folder . '/' . $img_array[$index] .');"><img class="visuallyhidden" src="' . $images_folder . '/' . $img_array[$index] . '" alt="" /></li>'.PHP_EOL;
+            echo '<li class="slide" style="background-image:url('. $images_folder . '/' . $img_array[$index] .');"><img class="visuallyhidden" src="' . $images_folder . '/' . $img_array[$index] . '" alt="" /></li>'.PHP_EOL;
             $img_count++;
           } 
         }
@@ -69,8 +68,53 @@
           echo ("<h2>Oops! No images found</h2>".PHP_EOL."<h3>Go ahead and add some files to the images folder</h3>");
         }
     ?>
-
     </ul>
+
+    <?php if( $soundtrack_play == true ){ ?>
+    <ul id="soundtrack">
+    <?php 
+      $audio_dir  = opendir($sounds_folder);
+
+      while($audio_file_name = readdir($audio_dir)) {
+        $audio_array[] = $audio_file_name;
+      }
+
+      closedir($sounds_folder);
+
+      sort($audio_array);
+
+      $audio_count = count($audio_array);
+      $audio_int_count = 0;
+
+      for($index=0; $index < $audio_count; $index++) {
+        $extension = substr($audio_array[$index], -3);
+        if ($extension == 'mp3'){
+          $audios_mp3[] = $audio_array[$index];
+        }elseif ($extension == 'ogg') {
+          $audios_ogg[] = $audio_array[$index];
+        }
+        $audio_int_count++;
+      }
+
+      $mp3_count = count($audios_mp3);
+      $ogg_count = count($audios_ogg);
+
+      for($index=0; $index < $mp3_count && $index < $ogg_count; $index++) {
+      ?>
+
+        <audio controls preload="auto" id="audio-<?php echo $index; ?>">
+          <source src="<?php echo $sounds_folder; ?>/<?php echo $audios_mp3[$index]; ?>" controls></source>
+          <source src="<?php echo $sounds_folder; ?>/<?php echo $audios_ogg[$index]; ?>" controls></source>
+          Tu navegador no soporta audio.
+        </audio>
+
+      <?php
+      }
+
+    ?>
+    </ul>
+    <?php } ?>
+
   </div>
 
   <footer>
@@ -84,35 +128,11 @@
 
   <script>
     jQuery(document).ready(function($) {
-
-      hashname = window.location.hash;
-      
-      elem = hashname.substring(0, hashname.length-1);
-
-      var start = 0; 
-
-      if(elem) {
-           $('#slideshow').scrollTo(elem, 0);
-           start = $(elem).index();
-      }
-
       $('#slideshow').serialScroll({
         axis: 'y',
-        start: start,
         cycle: <?php echo $cycle; ?>,
         easing: 'easeInOutExpo',
         items: '.slide',
-        onAfter: function(elem){ 
-                    window.location.hash = $(elem).attr('id')+1;
-
-                    var index = $(elem).index();
-
-                    <?php if($callback){
-
-                      echo( $callback );
-
-                    } ?>
-                 },
         duration: <?php echo $duration; ?><?php if($interval != "false"){ ?>,
         interval: <?php echo $interval; ?>,
         force: true <?php } ?>
