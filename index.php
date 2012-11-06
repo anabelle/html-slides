@@ -148,6 +148,7 @@
         onAfter: function(elem){ 
           window.location.hash = $(elem).attr('id')+1;
           var index = $(elem).index();
+          $('#soundtrack audio:eq('+index+')').addClass("play");
           <?php if($callback){
             echo( $callback );
           } ?>
