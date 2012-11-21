@@ -176,6 +176,13 @@
             echo( $callback );
           } ?>
         },
+        onBefore: function(  e, elem, $pane, $items, pos ) {
+          if( $('#slideshow .slide:eq('+pos+')').hasClass( 'loaded' ) ) {
+            return true;
+          }else{
+            return false;
+          }
+        },
         duration: <?php echo $duration; ?><?php if($interval != "false"){ ?>,
         interval: <?php echo $interval; ?>,
         force: true <?php } ?>
