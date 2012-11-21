@@ -180,6 +180,7 @@
           if( $('#slideshow .slide:eq('+pos+')').hasClass( 'loaded' ) ) {
             return true;
           }else{
+            loadImage( elem );
             return false;
           }
         },
