@@ -46,8 +46,8 @@ jQuery(document).ready(function($) {
 			event.preventDefault();
 			var currentTime = new Date();
 
-			if((currentTime.getTime() - checkTime) > 40){
-				
+			if((currentTime.getTime() - checkTime) > 42){
+
 				switch(p)
 				{
 					case 40:
