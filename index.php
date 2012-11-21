@@ -60,7 +60,7 @@
             if($videos[$img_count+1]){
               echo '<li class="slide video" id="s'.$img_count.$hash.'"><a class="videolink" href="'.$videos[$img_count+1].'" target="_blank">Video '.($img_count+1).'</a></li>'.PHP_EOL;
             }
-              echo '<li class="slide" id="s'.$img_count.$hash.'" style="background-image:url('. $images_folder . '/' . $img_array[$index] .');"><img class="visuallyhidden" src="' . $images_folder . '/' . $img_array[$index] . '" alt="" /></li>'.PHP_EOL;
+              echo '<li class="slide" id="s'.$img_count.$hash.'"><img class="visuallyhidden" src="g.gif" data-original="' . $images_folder . '/' . $img_array[$index] . '" alt="" /></li>'.PHP_EOL;
             $img_count++;
           } 
         }
@@ -134,9 +134,31 @@
 
       var start = 0; 
 
+      function loadImage( elem ){
+        var original = $(elem).find('img').data('original');
+        $('<img/>').attr('src', original).load(function() {
+          $(elem).css('background-image', 'url('+original+')').addClass('loaded');
+          if( $(elem).next( '.slide:not(.loaded)' ).length > 0 ){
+            loadImage( $(elem).next( '.slide') );
+            //console.log('next');
+          }else if( $(elem).prev( '.loaded').length > 0 ){
+            loadImage( $(elem).prev() );
+            //console.log('backflip');
+          }else if( $(elem).prev( '.slide:not(.loaded)' ).length > 0 ){
+            loadImage( $(elem).prev( '.slide') );
+            //console.log('prev');
+          }
+        });
+      }
+
       if(elem) {
          $('#slideshow').scrollTo(elem, 0);
          start = $(elem).index();
+         loadImage( elem );
+         
+      }else{
+        var elem = $('.slide:first-child');
+        loadImage( elem );
       }
 
       $('#slideshow').serialScroll({
@@ -148,6 +170,7 @@
         onAfter: function(elem){ 
           window.location.hash = $(elem).attr('id')+1;
           var index = $(elem).index();
+          loadImage( elem );
           $('#soundtrack audio:eq('+index+')').addClass("play");
           <?php if($callback){
             echo( $callback );

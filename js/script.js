@@ -58,4 +58,5 @@ jQuery(document).ready(function($) {
 			}
 		}
 	});
+
 });
