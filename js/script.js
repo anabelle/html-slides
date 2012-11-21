@@ -28,33 +28,47 @@ jQuery(document).ready(function($) {
 			event.preventDefault();
 		}
 	});
-	$(document).bind("keyup", function (event) {
+	var checkTime = 0;
+
+	$(document).bind("keydown", function (event) {
 		// left = 37
 		// right = 39
 		// up = 38
 		// down = 40
+		if(p == 40 || p == 38)
+		{
+			event.preventDefault();
+		}
+
 		var p = event.keyCode;
 		if(p == 40 || p == 38 || p == 37 || p == 39)
 		{
 			event.preventDefault();
-			switch(p)
-			{
-				case 40:
-					// down
-					$('#slideshow').trigger( 'next' );
-					break;
-				case 38:
-					//up
-					$('#slideshow').trigger( 'prev' );
-					break;
-				case 37:
-					// left
-					$('#slideshow').trigger( 'prev' );
-					break;
-				case 39:
-					// right
-					$('#slideshow').trigger( 'next' );
-					break;
+			var currentTime = new Date();
+
+			if((currentTime.getTime() - checkTime) > 40){
+				
+				switch(p)
+				{
+					case 40:
+						// down
+						$('#slideshow').trigger( 'next' );
+						break;
+					case 38:
+						//up
+						$('#slideshow').trigger( 'prev' );
+						break;
+					case 37:
+						// left
+						$('#slideshow').trigger( 'prev' );
+						break;
+					case 39:
+						// right
+						$('#slideshow').trigger( 'next' );
+						break;
+				}
+
+				checkTime = currentTime.getTime();
 			}
 		}
 	});
